@@ -1,0 +1,31 @@
+COUNT WORDS IN A GIVEN STRING
+
+Sample i/p -> "my name is ayush"
+Output -> 4
+
+
+
+
+#include <iostream>
+//#include<cstring>
+
+using namespace std;
+int countwords(string str){
+      int c=1;
+      for(int i=0;i<str.length();i++){
+            if(str[i]==' '){
+                  c++;
+            }
+      }
+      return c;
+}
+int main()
+{
+    string str;
+    getline(cin,str);
+    //cout<<str<<endl;
+    int output=countwords(str);
+    cout<<output<<endl;
+
+    return 0;
+}
