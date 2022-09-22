@@ -1,0 +1,40 @@
+MAXIMUM OCCURING CHARACTER IN STRING
+Sample i/p -> aabbccc
+Output -> c
+
+
+
+
+#include <iostream>
+//#include<cstring>
+
+using namespace std;
+char countoccurance(string str){
+      int count[26]={0};
+      for(int i=0;i<str.length();i++){
+            int number=0;
+            //char ch=str[i];
+            number=str[i] -'a';
+            count[number]++;
+      }
+      int max=count[0];
+      int ans=0;
+      for(int i=1;i<26;i++){
+            if(count[i]>max){
+                  ans=i;
+                  max=count[i];
+            }
+      }
+      return 'a'+ ans;
+      
+}
+int main()
+{
+    string str;
+    getline(cin,str);
+    //cout<<str<<endl;
+    char output= countoccurance(str);
+    cout<<output<<endl;
+
+    return 0;
+}
