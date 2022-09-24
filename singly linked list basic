@@ -51,7 +51,7 @@ void insertatmiddle(Node* &tail,Node* &head , int position,int d){
             c++;
       }
       //insert at last position
-      if(temp->next=NULL){
+      if(temp->next==NULL){
             atlast(tail,d);
             return;
       }
