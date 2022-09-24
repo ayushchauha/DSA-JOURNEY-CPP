@@ -52,7 +52,7 @@ void insertatmiddle(Node* &tail,Node* &head , int position,int d){
       }
       //insert at last position
       if(temp->next=NULL){
-            atlast(head,d);
+            atlast(tail,d);
             return;
       }
       Node* nodeat=new Node(d);
