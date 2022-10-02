@@ -1,0 +1,58 @@
+CODE STUDIO
+Merge Two Sorted Linked Lists
+I/P= 1->4->5
+     2->3->5
+O/P= 1->2->3->4->5->5
+
+
+Node<int>* solve(Node<int>* first, Node<int>* second){
+   
+    Node<int>* head1=first;
+     if(head1->next==NULL){
+        head1->next=second;
+        return first;
+    }
+    Node<int>* next1=head1->next;
+    Node<int>* head2=second;
+    Node<int>* next2=head2->next;
+    while(next1  != NULL && head2 != NULL){
+        if((head2->data >= head1->data) && (head2->data <= next1->data)){
+            head1->next=head2;  
+            next2=head2->next;
+            head2->next=next1;
+            head1=head1->next;
+            head2=next2;
+            
+            
+            
+        }
+        else{
+            
+            head1=next1;
+            next1=next1->next;
+            if(next1==NULL){
+                head1->next=head2;
+                return first;
+            }
+        }
+    }
+    return first;
+}
+Node<int>* sortTwoLists(Node<int>* first, Node<int>* second)
+{
+    // Write your code here.
+    if(first==NULL){
+        return second;
+    }
+    if(second==NULL){
+        return first;
+    }
+    Node<int>* head1=first;
+    Node<int>* head2=second;
+    if(head1->data <= head2->data){
+        return solve(first,second);
+    }
+    else{
+        return solve(second,first);
+    }
+}
