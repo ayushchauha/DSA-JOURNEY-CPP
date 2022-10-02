@@ -2,6 +2,7 @@ CODE STUDIO
 Check If Linked List Is Palindrome
 I/P= 1->2->1
 O/P= PALINDROME
+for more detail about question visit-- https://www.codingninjas.com/codestudio/problems/check-if-linked-list-is-palindrome_985248
 
 
 bool checkpalindrome( vector<int> arr){
