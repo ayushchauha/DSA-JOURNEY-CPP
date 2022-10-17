@@ -1,0 +1,26 @@
+https://www.codingninjas.com/codestudio/problems/reverse-stack-using-recursion_631875?topList=love-babbar-dsa-sheet-problems&leftPanelTab=0
+
+REVERSE STACK USING RECURSION
+
+void insertatbottom(stack<int> &stack,int num){
+    if(stack.empty()){
+        stack.push(num);
+        return;
+    }
+    int ele=stack.top();
+    stack.pop();
+    insertatbottom(stack,num);
+    stack.push(ele);
+    
+}
+
+void reverseStack(stack<int> &stack) {
+    //base case
+    if(stack.empty()){
+        return;
+    }
+    int num=stack.top();
+    stack.pop();
+    reverseStack(stack);
+    insertatbottom(stack,num);
+}
