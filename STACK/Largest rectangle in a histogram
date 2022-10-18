@@ -1,0 +1,57 @@
+https://www.codingninjas.com/codestudio/problems/largest-rectangle-in-a-histogram_1058184?leftPanelTab=0
+
+Largest rectangle in a histogram
+
+
+#include <stack>
+vector<int> nextsmaller(vector < int > & arr,int n){
+    stack<int> s;
+    s.push(-1);
+    vector<int> ans(n);
+    for(int i=n-1;i>=0;i--){
+        int curr=arr[i];
+        while(s.top()!=-1 && arr[s.top()]>=curr){
+            s.pop();
+        }
+        ans[i]=s.top();
+        s.push(i);
+    }
+    return ans;
+}
+vector<int> prevsmaller(vector < int > & arr,int n){
+    stack<int> s;
+    s.push(-1);
+    vector<int> ans(n);
+    for(int i=0;i<n;i++){
+        int curr=arr[i];
+        while(s.top()!=-1 && arr[s.top()]>=curr){
+            s.pop();
+        }
+        ans[i]=s.top();
+        s.push(i);
+    }
+    return ans;
+}
+
+
+int largestRectangle(vector < int > & heights) {
+   int n=heights.size();
+   vector<int> next(n);
+   vector<int> prev(n);
+   next=nextsmaller(heights,n);
+   prev=prevsmaller(heights,n);
+   int area=-1;
+   for(int i=0;i<n;i++){
+      
+      int lenght=heights[i];
+      int a=next[i];
+      int b=prev[i];
+       if(next[i]==-1){
+           a=n;
+       }
+       int width=a-b-1;
+       int newarea=lenght*width;
+       area=max(area,newarea);
+   }
+     return area;
+ }
