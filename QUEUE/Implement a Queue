@@ -1,0 +1,69 @@
+https://www.codingninjas.com/codestudio/problems/queue-using-array-or-singly-linked-list_2099908?leftPanelTab=0
+
+Implement a Queue
+
+
+#include <bits/stdc++.h> 
+class Queue {
+    int *arr;
+    int frontl;
+    int rear;
+    int size;
+public:
+    Queue() {
+        // Implement the Constructor
+        size=10001;
+        frontl=0;
+        rear=0;
+        arr=new int[size];
+    }
+
+    /*----------------- Public Functions of Queue -----------------*/
+
+    bool isEmpty() {
+       if(frontl==rear){
+           return true;
+       }
+        else{
+            return false;
+        }
+    }
+
+    void enqueue(int data) {
+        // Implement the enqueue() function
+        if(rear==size){
+            cout<<"queue is full";
+        }
+        else{
+            arr[rear]=data;
+            rear++;
+        }
+    }
+
+    int dequeue() {
+        // Implement the dequeue() function
+        if(frontl==rear){
+            return -1;
+        }
+        else{
+            int element=arr[frontl];
+            arr[frontl]=-1;
+            frontl++;
+            if(frontl==rear){
+                frontl=rear=0;
+            }
+            return element;
+        }
+        
+    }
+
+    int front() {
+        // Implement the front() function
+        if(frontl==rear){
+            return -1;
+        }
+        else{
+            return arr[frontl];
+        }
+    }
+};
