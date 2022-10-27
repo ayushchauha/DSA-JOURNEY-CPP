@@ -1,0 +1,26 @@
+https://www.codingninjas.com/codestudio/problems/reversing-queue_1170046?leftPanelTab=0
+
+Reversing Queue
+
+#include <bits/stdc++.h> 
+#include<queue>
+/*/void insertatfront(queue<int> &q,int num){
+    if(q.empty()){
+        q.push(num);
+        return ;
+    }
+    int element=q.front();
+    q.pop();
+    insertatfront(q,num);
+    q.push(element);
+}*/
+void reverse(queue < int > & q) {
+    if(q.empty()){
+         return;
+    }
+    int num=q.front();
+    q.pop();
+    reverse(q);
+   // insertatfront(q,num);
+    q.push(num);
+}
