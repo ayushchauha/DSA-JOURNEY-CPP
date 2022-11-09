@@ -1,0 +1,31 @@
+https://www.codechef.com/submit/TODOLIST
+
+Problems in your to-do list
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int T;
+	cin>>T;
+	int D[1000];
+	int i=0;
+	while(i<T){
+	    int N;
+	    cin>>N;
+	for(int i=0;i<N;i++){
+	    cin>>D[i];
+	}
+	int c=0;
+	for(int i=0;i<N;i++){
+	    if(D[i]>=1000){
+	        c++;
+	    }
+	}
+	    cout<<c<<endl;
+	    i++;
+	}
+	
+	return 0;
+}
