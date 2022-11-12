@@ -1,0 +1,29 @@
+https://www.codechef.com/problems/NUM239
+
+Counting Pretty Numbers
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int T;
+	cin>>T;
+	
+	while(T--){
+	    int L,R;
+	    cin>>L>>R;
+	    int c=0;
+	    for(int i=L;i<=R;i++){
+	        
+	        int n=i%10;
+	        if(n==2 || n==3 || n==9){
+	            c++;
+	        }
+	    }
+	    cout<<c<<endl;
+	    
+	  
+	}
+	return 0;
+}
