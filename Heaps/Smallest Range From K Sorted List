@@ -1,0 +1,66 @@
+Smallest Range From K Sorted List
+
+
+https://www.codingninjas.com/codestudio/problems/smallest-range-from-k-sorted-list_1069356?leftPanelTab=0&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
+
+
+#include <bits/stdc++.h>
+#include<queue>
+class node{
+    public:
+    int data;
+    int row;
+    int col;
+    
+    
+    node(int d,int r,int c){
+        data=d;
+        row=r;
+        col=c;
+    }
+};
+class compare{
+    public:
+    bool operator()(node* a,node* b){
+        return a->data > b->data;
+    }
+        
+};
+
+int kSorted(vector<vector<int>> &a, int k, int n) {
+    //create minheap and store maximum/minimun element by tracking it
+    
+    priority_queue<node*,vector<node*>,compare> minheap;
+    int mini=INT_MAX;
+    int maxi=INT_MIN;
+    for(int i=0;i<k;i++){
+        int element=a[i][0];            
+        maxi=max(maxi,element);     
+        mini=min(mini,element);
+        minheap.push(new node(a[i][0],i,0));
+    }
+    //starting range of answer
+    int start=mini;
+    int end=maxi;
+    //traverse unitll heap empty
+    while(!minheap.empty()){
+        node* temp=minheap.top();
+        minheap.pop();
+        mini=temp->data;
+        //update range of answer
+        if(maxi-mini < end-start){
+            start=mini;
+            end=maxi;
+        }
+        //check next element in min element array if present or not
+        if(temp->col+1 < n){
+            maxi=max(maxi,a[temp->row][temp->col+1]);
+            minheap.push(new node(a[temp->row][temp->col+1],temp->row,temp->col+1));
+        }
+        //exit if not present
+        else{
+            break;
+        }
+    }
+   return (end-start+1); 
+}
