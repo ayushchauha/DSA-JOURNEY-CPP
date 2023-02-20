@@ -1,0 +1,56 @@
+Sort 0 1 2
+
+
+https://www.codingninjas.com/codestudio/problems/sort-0-1-2_631055?source=youtube&campaign=LoveBabbar_Codestudiovideo1&utm_source=youtube&utm_medium=affiliate&utm_campaign=LoveBabbar_Codestudiovideo1
+
+
+////////////////APPROACH 1
+
+#include <bits/stdc++.h> 
+void sort012(int *arr, int n)
+{
+   //   Write your code here
+    int c0=0;
+    int c1=0;
+    int c2=0;
+    for(int i=0;i<n;i++){
+        if(arr[i]==0){
+            c0++;
+        }
+        if(arr[i]==1){
+            c1++;
+        }
+        else
+            c2++;
+    }
+   for(int i=0;i<c0;i++){
+       arr[i]=0;
+   }  
+     for(int i=c0;i<(c0+c1);i++){
+       arr[i]=1;
+   }  
+     for(int i=(c0+c1);i<n;i++){
+       arr[i]=2;
+   }  
+    
+    
+    ///////////approach 2
+    
+    #include <bits/stdc++.h> 
+ void sort012(int *arr, int n) { 
+      //   Write your code here   
+       int j=0;   
+       for(int i=0;i<n;i++){     
+            if(arr[i]==0){     
+                swap(arr[j],arr[i]);   
+                j++;    }    } 
+        for(int i=j;i<n;i++){
+                if(arr[i]==1){
+                    swap(arr[j],arr[i]);
+                        j++;
+               } 
+       }
+ }
+    
+    
+}
