@@ -1,0 +1,53 @@
+Search in Rotated Sorted Array
+
+
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+
+class Solution {
+    private:
+    int pivot1(vector<int>& nums){
+        int s=0;
+        int e=nums.size()-1;
+        int mid=s+(e-s)/2;
+        while(s<e){
+            if(nums[mid]>=nums[0]){
+                s=mid+1;
+            }
+            else{
+                e=mid;
+            }
+            mid=s+(e-s)/2;
+        }
+        return s;
+    }
+    int binarysearch(vector<int>& nums,int s1,int e1,int target){
+        int s=s1;
+        int e=e1;
+        int mid=s+(e-s)/2;
+        while(s<=e){
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]>target){
+                e=mid-1;
+            }
+            else{
+                s=mid+1;
+            }
+            mid=s+(e-s)/2;
+        }
+        return -1;
+    }
+public:
+    int search(vector<int>& nums, int target) {
+        int pivot=pivot1(nums);
+        if(target>=nums[pivot] && target<=nums[nums.size()-1]){
+           return  binarysearch(nums,pivot,nums.size()-1,target);
+        }
+        else{
+            return binarysearch(nums,0,pivot-1,target);
+        }
+        
+    }
+};
