@@ -1,0 +1,54 @@
+Valid Palindrome
+
+
+https://leetcode.com/problems/valid-palindrome/description/
+
+
+using namespace std;
+class Solution {
+    private:
+    bool valid(char ch){
+        if((ch>='a' && ch<='z')  || ( ch>='A' && ch<='Z') || (ch>='0' && ch<='9') ){
+            return 1;
+        }
+        return 0;
+    }
+    char lower(char ch){
+    if((ch>='a' && ch<='z') || (ch<='0' && ch<='9')){
+        return ch;
+    }
+    else{
+        char temp=ch-'A' + 'a';
+        return temp;
+    }
+}
+    int pali(string ch){
+    int s=0;
+    int e=ch.length()-1;
+    while(s<=e){
+        if(ch[s]!=ch[e]){
+            return 0;
+        }
+        else{
+            s++;
+            e--;
+        }
+    }
+    return 1;
+}
+public:
+    bool isPalindrome(string s) {
+        string temp="";
+       int  n=s.length();
+        for(int i=0;i<n;i++){
+            if(valid(s[i])){
+                temp.push_back(s[i]);
+            }
+        }
+        for(int j=0;j<temp.length();j++){
+           temp[j]= lower(temp[j]);
+        }
+    
+    return pali(temp);}
+};
+
