@@ -1,0 +1,30 @@
+Reverse Vowels of a String
+
+https://leetcode.com/problems/reverse-vowels-of-a-string/description/
+
+
+class Solution {
+public:
+    string reverseVowels(string s) {
+        int i=0;
+        int e=s.size()-1;
+        while(i<e){
+           cout<<s[i]<<" "<<s[e]<<endl;
+            if((s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u' || s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U') && (s[e]=='a' || s[e]=='e' || s[e]=='i' || s[e]=='o' || s[e]=='u' || s[e]=='A' || s[e]=='E' || s[e]=='I' || s[e]=='O' || s[e]=='U') ){
+                cout<<"yes"<<i<<" "<<e<<endl;
+                swap(s[i++],s[e--]);
+            }
+            else if((s[i]=='a'|| s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u'|| s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U') && (s[e]!='a' || s[e]!='e' || s[e]!='i' || s[e]!='o' || s[e]!='u' || s[e]!='A' || s[e]!='E' || s[e]!='I' || s[e]!='O' || s[e]!='U')){
+                e--;
+            }
+            else if((s[i]!='a'|| s[i]!='e' || s[i]!='i' || s[i]!='o' || s[i]!='u'|| s[i]!='A'|| s[i]!='E' || s[i]!='I' || s[i]!='O' || s[i]!='U') && (s[e]=='a' || s[e]=='e' || s[e]=='i' || s[e]=='o' || s[e]=='u' || s[e]=='A' || s[e]=='E' || s[e]=='I' || s[e]=='O' || s[e]=='U')){
+                i++;
+            }
+            else{
+                i++;
+                e--;
+            }
+        }
+        return s;
+    }
+};
