@@ -1,0 +1,31 @@
+Find the Index of the First Occurrence in a String
+
+
+https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/
+
+
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(needle.size()>haystack.size()){
+            return -1;
+        }
+        for(int i=0;i<haystack.size();i++){
+            string ans="";
+              ans+=haystack[i];
+              int j=i+1;
+              int count=1;
+              while(j<haystack.size() && count<needle.size()){
+                  ans+=haystack[j];
+                  count++;
+                  j++;
+              }
+              cout<<ans<<" ";
+              if(ans==needle){
+                  return i;
+              }
+             
+        }
+        return -1;
+    }
+};
