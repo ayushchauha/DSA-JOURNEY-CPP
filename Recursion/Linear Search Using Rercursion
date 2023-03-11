@@ -3,7 +3,7 @@ Linear Search Using Rercursion
 #include <iostream>
 
 using namespace std;
-bool binarySearch(int arr[],int n,int k){
+bool linearSearch(int arr[],int n,int k){
       
       if(n==0){
             return false;
@@ -12,7 +12,7 @@ bool binarySearch(int arr[],int n,int k){
             return true;
       }
       else{
-            return binarySearch(arr+1,n-1,k);
+            return linearSearch(arr+1,n-1,k);
       }
             
       
@@ -29,7 +29,7 @@ int main()
    }
    int k;
    cin>>k;
-   cout<<binarySearch(arr,n,k);
+   cout<<linearSearch(arr,n,k);
 
     return 0;
 }
