@@ -1,0 +1,34 @@
+Search Insert Position
+
+https://leetcode.com/problems/search-insert-position/description/
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int s=0;
+        int end=nums.size()-1;
+        int mid=s+(end-s)/2;
+        
+       
+        while(s<=end){
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid]>target){
+                
+                
+                end=mid-1;
+                
+            }
+            else{
+            
+                
+                s=mid+1;
+                
+            }
+            mid=s+(end-s)/2;
+        }
+       
+        return s;
+    }
+};
