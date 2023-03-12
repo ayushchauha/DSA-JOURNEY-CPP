@@ -1,0 +1,25 @@
+Check If Binary Representation of a Number is Palindrome
+
+#include <bits/stdc++.h> 
+using namespace std;
+
+bool reverse(string& s,int i,int j){
+      if(i>j){
+            return 1;
+      }
+      if(s[i]!=s[j]){
+            return 0;
+      }
+      
+      reverse(s,i+1,j-1);
+}
+bool checkPalindrome(long long N)
+{
+    string s="";
+    while (N > 0) {
+      int digit = N % 2;
+      s.push_back(digit);
+      N = N / 2;
+    }
+    return reverse(s, 0, s.size() - 1);
+};
