@@ -1,0 +1,63 @@
+Count Inversions
+
+
+#include <bits/stdc++.h> 
+long long merge(long long *arr, long long i,long long j){
+    long long count=0;
+    long long mid=i+(j-i)/2;
+    long long len1=mid-i+1;
+    long long len2=j-mid;
+    long long *first=new long long[len1];
+    long long *second=new long long[len2];
+    int s=i;
+    for(int i=0;i<len1;i++){
+        first[i]=arr[s++];
+    }
+    for(int i=0;i<len2;i++){
+        second[i]=arr[s++];
+    }
+   long long index1=0;
+    long long index2=0;
+    long long k=i;
+    while(index1<len1 && index2<len2){
+        if(first[index1]>second[index2]  ){
+            count=count+(len1-index1);
+            arr[k++]=second[index2++];
+        }
+        else{
+            arr[k++]=first[index1++];
+        }
+        
+    }
+     while(index1<len1){
+        arr[k++]=first[index1];
+            index1++;
+    }
+    while(index2<len2){
+        arr[k++]=second[index2];
+            index2++;
+    }
+    delete[] first;
+    delete[] second;
+    return count;
+    
+}
+long long  solve(long long *arr, long long i,long long j){
+    int count=0;
+    if(i>=j){
+        return 0;
+    }
+    long long  mid=i+(j-i)/2;
+    count+=solve(arr,i,mid);
+    count+=solve(arr,mid+1,j);
+    count+=merge(arr,i,j);
+    return count;
+   
+}
+long long getInversions(long long *arr, int n){
+   
+    // Write your code here.
+    
+    long long ans=solve(arr,0,n-1);
+    return ans;
+}
