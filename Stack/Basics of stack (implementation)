@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+class stack{
+      public:
+      int *arr;
+      int top;
+      int size;
+      
+      stack(int size){
+        this->size=size;
+        arr=new int[size];
+        top=-1;
+      }
+      
+      void push(int element){
+        if(top<size){
+          top++;
+          arr[top]=element;
+        }
+        else{
+          cout<<"stack overflow"<<endl;
+        }
+      }
+      void pop(){
+        if(top>=0){
+           top--;
+         }
+        else{
+           cout<<"stack underflow"<<endl;
+         }
+      }
+      int peak(){
+        if(top>=0){
+          return arr[top];
+        }
+        else{
+          return -1;
+        }
+      }
+      bool isempty(){
+            if(top==-1){
+               return 1;
+            }
+            else{
+        
+              return 0;
+            }
+      }
+};
+int main()
+{
+    stack s(5);
+    s.push(22);
+    s.push(23);
+    cout<<s.peak()<<endl;
+    s.pop();
+    cout<<s.peak()<<endl;
+    s.pop();
+    cout<<s.isempty()<<endl;
+    
+
+    return 0;
+}
