@@ -1,0 +1,24 @@
+Sort a Stack
+
+#include <bits/stdc++.h> 
+void inertinsorted(stack<int> &s,int num){
+	if(s.empty() || num>s.top()){
+		s.push(num);
+		return;
+	}
+	int num1=s.top();
+	s.pop();
+	inertinsorted(s,num);
+	s.push(num1);
+}
+void sortStack(stack<int> &stack)
+{
+	// Write your code here
+	if(stack.empty()){
+		return;
+	}
+	int num=stack.top();
+	stack.pop();
+	sortStack(stack);
+	inertinsorted(stack,num);
+}
