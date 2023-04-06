@@ -58,10 +58,59 @@ void levelOrderTraversal(node* root){
             }
       }
 }
+
+//-------------------------------------------------------------------------------->>INORDER TRAVERSAL
+
+void inorderTraveral(node* root){
+      //base case
+      if(root==NULL){
+            return ;
+      }
+      //left part
+      inorderTraveral(root->left);
+      //print node
+      cout<<root->data<<" ";
+      //right part
+      inorderTraveral(root->right);
+}
+
+//----------------------------------------------------------------------------->>PREORDER TRAVERSAL
+
+void preorderTraveral(node* root){
+      //base case
+      if(root==NULL){
+            return ;
+      }
+      //print node
+      cout<<root->data<<" ";
+      //left part
+      preorderTraveral(root->left);
+      //right part
+      preorderTraveral(root->right);
+}
+
+//----------------------------------------------------------------------------->>POST ORDER TRAVERSAL
+
+void postorderTraveral(node* root){
+      //base case
+      if(root==NULL){
+            return ;
+      }
+      //left part
+      postorderTraveral(root->left);
+      //right part
+      postorderTraveral(root->right);
+      //print node
+      cout<<root->data<<" ";
+}
+
 int main()
 {
     node* root=NULL;
     root=buildtree(root);
     levelOrderTraversal(root);
+    inorderTraveral(root);
+    preorderTraveral(root);
+    postorderTraveral(root);
     return 0;
 }
