@@ -1,0 +1,55 @@
+#include <iostream>
+#include<map>
+#include<unordered_map>
+using namespace std;
+
+int main()
+{
+    //creation
+    unordered_map<string,int> m;
+    //insertion
+    //1 type
+    pair<string,int> p=make_pair("babbar",3);
+    m.insert(p);
+    //2 type
+    pair<string,int> pair2("love",2);
+    m.insert(pair2);
+    //3 type
+    m["mera"]=1;
+    
+    //search
+    
+    cout<<m["mera"]<<endl;
+    cout<<m.at("babbar")<<endl;
+    
+    //important
+    cout<<m["ayush"]<<endl;
+    cout<<m.at("ayush")<<endl;
+    
+    //size
+    
+    cout<<m.size()<<endl;
+    
+    //count
+    cout<<m.count("ayush")<<endl;
+    cout<<m.count("ayush chauhan")<<endl;
+    
+    //erase
+    m.erase("ayush");
+    cout<<m.size()<<endl;
+    
+    //traverse entire map
+    
+    for(auto i:m){
+          cout<<i.first<<" "<<i.second<<endl;
+    }
+    
+    
+    //using iterator
+    unordered_map<string,int> :: iterator it=m.begin();
+    while(it!=m.end()){
+          cout<<it->first<<" "<<it->second<<endl;
+          it++;
+    }
+    return 0;
+}
